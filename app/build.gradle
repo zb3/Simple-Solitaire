@@ -2,11 +2,11 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 28
-    buildToolsVersion '28.0.3'
 
     defaultConfig {
         applicationId "de.tobiasbielefeld.solitaire"
         minSdkVersion 14
+        //noinspection ExpiredTargetSdkVersion
         targetSdkVersion 28
         versionCode 71
         versionName "3.13"
@@ -15,27 +15,40 @@ android {
         buildConfigField "long", "TIMESTAMP", System.currentTimeMillis() + "L"
     }
 
+    signingConfigs {
+        dummykey {
+            keyAlias "androiddebugkey"
+            keyPassword "android"
+            storeFile rootProject.file("debug.keystore")
+            storePassword "android"
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled true
             shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.dummykey
         }
         debug {
             zipAlignEnabled true
+            signingConfig signingConfigs.dummykey
         }
     }
 
-    lintOptions {
-        disable 'MissingTranslation'
-        abortOnError false
-    }
 
     compileOptions {
         encoding = 'UTF-8'
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    namespace 'de.tobiasbielefeld.solitaire'
+    lint {
+        abortOnError false
+        disable 'MissingTranslation'
+    }
+
 }
 
 dependencies {

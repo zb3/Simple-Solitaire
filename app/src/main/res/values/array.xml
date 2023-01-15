@@ -101,6 +101,8 @@
     <string-array name="restart_menu" translatable="false">
         <item>@string/dialog_start_new_game_title</item>
         <item>@string/dialog_redeal_title</item>
+        <item>@string/dialog_load_title</item>
+        <item>@string/dialog_save_title</item>
         <item>@string/item_return_to_main_menu</item>
     </string-array>
 
@@ -114,6 +116,8 @@
     <string-array name="won_menu" translatable="false">
         <item>@string/dialog_start_new_game_title</item>
         <item>@string/dialog_redeal_title</item>
+        <item>@string/dialog_load_title</item>
+        <item>@string/dialog_save_title</item>
         <item>@string/item_return_to_main_menu</item>
     </string-array>
 

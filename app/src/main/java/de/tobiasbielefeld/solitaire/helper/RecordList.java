@@ -239,6 +239,14 @@ public class RecordList {
 
         private boolean alreadyDecremented = false;
 
+        public ArrayList<Integer> getMoveOrder() {
+            return moveOrder;
+        }
+
+        public ArrayList<Card> getFlipCards() {
+            return flipCards;
+        }
+
         public ArrayList<Card> getCurrentCards() {
             return currentCards;
         }

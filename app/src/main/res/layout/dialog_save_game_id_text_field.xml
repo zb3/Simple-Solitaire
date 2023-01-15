@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<EditText xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/save_game_id"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:editable="false"
+    android:inputType="none"
+    android:hint="@string/dialog_save_id_load_text"
+    android:importantForAutofill="no"
+    android:lines="2"
+    android:maxLines="2"
+    tools:ignore="Deprecated" />

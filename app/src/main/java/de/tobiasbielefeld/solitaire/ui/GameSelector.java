@@ -14,6 +14,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TableLayout;
@@ -23,6 +24,7 @@ import java.util.ArrayList;
 
 import de.tobiasbielefeld.solitaire.R;
 import de.tobiasbielefeld.solitaire.classes.CustomAppCompatActivity;
+import de.tobiasbielefeld.solitaire.dialogs.DialogLoadGame;
 import de.tobiasbielefeld.solitaire.ui.about.AboutActivity;
 import de.tobiasbielefeld.solitaire.ui.manual.Manual;
 import de.tobiasbielefeld.solitaire.ui.settings.Settings;
@@ -68,6 +70,12 @@ public class GameSelector extends CustomAppCompatActivity
         } else {
             prefs.saveCurrentGame(DEFAULT_CURRENT_GAME);
         }
+
+        Button loadButton = findViewById(R.id.load_button);
+        loadButton.setOnClickListener(view -> {
+            DialogLoadGame dialogLoadGame = new DialogLoadGame();
+            dialogLoadGame.show(getSupportFragmentManager(), "LOAD_DIALOG");
+        });
     }
 
     @Override

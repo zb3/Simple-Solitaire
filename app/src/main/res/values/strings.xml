@@ -72,7 +72,34 @@
 <string name="dialog_redeal_title">"Give cards again"</string>
 <string name="dialog_redeal_text">"Your current progress will be lost, but the cards are dealt like in the current game."</string>
 
-<!-- If you want to help with translations, please use this site: https://poeditor.com/join/project/PYX4vcwTjA -->
+ <!-- dialog load & save -->
+ <string name="dialog_load_title">"Load Game"</string>
+ <string name="dialog_load_id_title">"Load from game id"</string>
+ <string name="dialog_load_paste_id_hint">"Paste game id here..."</string>
+ <string name="dialog_load_button_label">"Load"</string>
+ <string name="dialog_load_file_title">"Load from file"</string>
+ <string name="dialog_load_file_button_label">"Select file and load"</string>
+ <string name="dialog_load_file_io_error">"Failed to read file: "</string>
+ <string name="dialog_load_loading_error">"Failed to load game (check logcat for details)"</string>
+
+ <string name="dialog_load_save_ok_button_label">"Close"</string>
+
+ <string name="dialog_save_title">"Save Game"</string>
+ <string name="dialog_save_id_title">"Save as game id"</string>
+ <string name="dialog_save_copy_button_label">"Copy"</string>
+ <string name="dialog_save_id_load_text">"Generating..."</string>
+ <string name="dialog_save_file_title">"Save to file"</string>
+ <string name="dialog_save_state_setting">"Include game state"</string>
+ <string name="dialog_save_undo_setting">"Include undo information"</string>
+ <string name="dialog_save_select_button_label">"Select file and save"</string>
+ <string name="dialog_save_copy_ok_toast">"Game copied as string"</string>
+ <string name="dialog_save_android_too_old_error">"Saving files requires at least Android 4.4 (KitKat)."</string>
+ <string name="dialog_save_file_ok_toast">"File saved!"</string>
+ <string name="dialog_save_file_error">"Could not open file."</string>
+ <string name="dialog_save_file_io_error">"Failed to write to file: "</string>
+ <string name="dialog_save_json_error">"JSON error: "</string>
+
+ <!-- If you want to help with translations, please use this site: https://poeditor.com/join/project/PYX4vcwTjA -->
 <string name="title_activity_manual">"Manual"</string>
 <string name="title_activity_settings">"Settings"</string>
 <string name="title_activity_about">"About Game"</string>

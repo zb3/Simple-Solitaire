@@ -45,5 +45,7 @@
     <bool name="default_hide_auto_complete_button">false</bool>
     <bool name="default_improve_auto_move">false</bool>
     <bool name="default_statistics_hide_win_percentage">false</bool>
+    <bool name="default_save_include_state">true</bool>
+    <bool name="default_save_include_undo">false</bool>
 </resources>
 

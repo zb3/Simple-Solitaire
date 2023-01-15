@@ -115,6 +115,14 @@ public class GameLogic {
         } else if (wonAndReloaded && prefs.getSavedAutoStartNewGame()) {
             //in case the game was selected from the main menu and it was already won, start a new game
             newGame();
+        } else if (prefs.getSavedCards().isEmpty()) {
+            // can happen if we've loaded a saved game without state
+            // the only difference between this and a redeal is that we need to load saved random
+            // cards. note that we don't need to run ensureMovability here as an invalid state should
+            // not be saved this way.
+
+            loadRandomCards();
+            redeal();
         } else {
             scores.load();
             recordList.load();
@@ -397,5 +405,12 @@ public class GameLogic {
     public boolean stopConditions() {
         return (autoComplete.isRunning() || animate.cardIsAnimating() || hint.isRunning()
                 || recordList.isWorking() || autoMove.isRunning() || isDialogVisible);
+    }
+
+    /**
+     * @return True if the game is started, a movement has been made and the game is not won.
+     */
+    public boolean isGameInProgress() {
+        return movedFirstCard && !prefs.isFirstRun() && !wonAndReloaded && !won;
     }
 }

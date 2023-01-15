@@ -54,7 +54,7 @@ public class Card {
     public static int KING = 13;
 
     //no enum, I want to explicitly set the values, because they are saved in the sharedPref and
-    private static final int STATE_FACED_DOWN = 0;
+    public static final int STATE_FACED_DOWN = 0;
     public static final int STATE_FACED_UP = 1;
     public static final int STATE_INVISIBLE = 2;
 

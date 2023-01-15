@@ -154,6 +154,8 @@ public class Preferences {
     public static String PREF_KEY_SHOW_DIALOG_MIX_CARDS;
     public static String PREF_KEY_HIDE_MENU_BAR;
     public static String PREF_KEY_IMPROVE_AUTO_MOVE;
+    public static String PREF_KEY_SAVE_INCLUDE_STATE;
+    public static String PREF_KEY_SAVE_INCLUDE_UNDO;
     public static String DEFAULT_CANFIELD_DRAW;
     public static String DEFAULT_KLONDIKE_DRAW;
     public static String DEFAULT_VEGAS_DRAW;
@@ -238,6 +240,8 @@ public class Preferences {
     public static boolean DEFAULT_DEVELOPER_OPTION_INSTANT_WIN;
     public static boolean DEFAULT_DEVELOPER_OPTION_NO_SAVING;
     public static boolean DEFAULT_USE_TRUE_RANDOMISATION;
+    public static boolean DEFAULT_SAVE_INCLUDE_STATE;
+    public static boolean DEFAULT_SAVE_INCLUDE_UNDO;
 
     public Preferences(Context context) {
         loadStrings(context.getResources());
@@ -409,6 +413,9 @@ public class Preferences {
         PREF_KEY_DEVELOPER_OPTION_NO_SAVING = res.getString(R.string.pref_key_developer_option_no_saving);
         PREF_KEY_DEVELOPER_OPTION_DEAL_CORRECT_SEQUENCES = res.getString(R.string.pref_key_developer_option_deal_correct_sequences);
 
+        PREF_KEY_SAVE_INCLUDE_STATE = res.getString(R.string.pref_key_save_include_state);
+        PREF_KEY_SAVE_INCLUDE_UNDO = res.getString(R.string.pref_key_save_include_undo);
+
         DEFAULT_PYRAMID_DIFFICULTY = res.getStringArray(R.array.pref_pyramid_difficulty_values)[0];
         DEFAULT_LANGUAGE = res.getStringArray(R.array.pref_language_values)[0];
         DEFAULT_SPIDER_DIFFICULTY = res.getStringArray(R.array.pref_spider_difficulty_values)[0];
@@ -493,6 +500,8 @@ public class Preferences {
         DEFAULT_VEGAS_DRAW = res.getStringArray(R.array.pref_draw_values)[1];
         DEFAULT_CANFIELD_DRAW = res.getStringArray(R.array.pref_draw_values)[1];
         DEFAULT_NAPOLEONSTOMB_NUMBER_OF_RECYCLES = res.getString(R.string.default_napoleons_tomb_number_of_recycles);
+        DEFAULT_SAVE_INCLUDE_STATE = res.getBoolean(R.bool.default_save_include_state);
+        DEFAULT_SAVE_INCLUDE_UNDO = res.getBoolean(R.bool.default_save_include_undo);
     }
 
     private void putIntList(String name, List<Integer> list) {
@@ -1361,6 +1370,14 @@ public class Preferences {
         return getSharedIntList(PREF_KEY_MENU_ORDER);
     }
 
+    public boolean getSaveIncludeState() {
+        return savedSharedData.getBoolean(PREF_KEY_SAVE_INCLUDE_STATE, DEFAULT_SAVE_INCLUDE_STATE);
+    }
+
+    public boolean getSaveIncludeUndo() {
+        return savedSharedData.getBoolean(PREF_KEY_SAVE_INCLUDE_UNDO, DEFAULT_SAVE_INCLUDE_UNDO);
+    }
+
     /* setters for shared data */
 
     public void saveYukonRulesOld() {
@@ -1633,6 +1650,14 @@ public class Preferences {
 
     public void saveMenuOrderList(ArrayList<Integer> list) {
         putSharedIntList(PREF_KEY_MENU_ORDER, list);
+    }
+
+    public void putSaveIncludeState(boolean value) {
+        savedSharedData.edit().putBoolean(PREF_KEY_SAVE_INCLUDE_STATE, value).apply();
+    }
+
+    public void putSaveIncludeUndo(boolean value) {
+        savedSharedData.edit().putBoolean(PREF_KEY_SAVE_INCLUDE_UNDO, value).apply();
     }
 
     public void copyToGameIndividualSettings() {

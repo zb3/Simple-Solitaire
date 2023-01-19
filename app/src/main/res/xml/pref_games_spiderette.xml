@@ -13,6 +13,11 @@
             android:summary="%s"
             android:title="@string/settings_spider_difficulty" />
 
+        <de.tobiasbielefeld.solitaire.classes.CustomCheckBoxPreference
+            android:defaultValue="@bool/default_spiderette_relaxed_mode"
+            android:key="@string/pref_key_spiderette_relaxed_mode"
+            android:summary="@string/settings_spider_relaxed_mode_text"
+            android:title="@string/settings_spider_relaxed_mode_title" />
     </PreferenceCategory>
 
 </PreferenceScreen>

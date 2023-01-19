@@ -47,5 +47,7 @@
     <bool name="default_statistics_hide_win_percentage">false</bool>
     <bool name="default_save_include_state">true</bool>
     <bool name="default_save_include_undo">false</bool>
+    <bool name="default_spider_relaxed_mode">false</bool>
+    <bool name="default_spiderette_relaxed_mode">false</bool>
 </resources>
 

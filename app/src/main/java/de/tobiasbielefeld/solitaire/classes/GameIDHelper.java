@@ -113,9 +113,11 @@ public class GameIDHelper {
                 break;
             case "Spider":
                 settingsArray.put(prefs.getSavedSpiderDifficultyOld());
+                settingsArray.put(prefs.getSavedSpiderRelaxedMode());
                 break;
             case "Spiderette":
                 settingsArray.put(prefs.getSavedSpideretteDifficultyOld());
+                settingsArray.put(prefs.getSavedSpideretteRelaxedMode());
                 break;
             case "Vegas":
                 settingsArray.put(prefs.getSavedKlondikeVegasDrawModeOld(2));
@@ -418,12 +420,20 @@ public class GameIDHelper {
                     sharedData.putString(prefs.PREF_KEY_SPIDER_DIFFICULTY_OLD, val);
                     sharedData.putString(prefs.PREF_KEY_SPIDER_DIFFICULTY, val);
                 }
+                if (settingIdx < totalSettings) {
+                    boolean val = settingsArray.getBoolean(settingIdx++);
+                    sharedData.putBoolean(prefs.PREF_KEY_SPIDER_RELAXED_MODE, val);
+                }
                 break;
             case "Spiderette":
                 if (settingIdx < totalSettings) {
                     String val = settingsArray.getString(settingIdx++);
                     sharedData.putString(prefs.PREF_KEY_SPIDERETTE_DIFFICULTY_OLD, val);
                     sharedData.putString(prefs.PREF_KEY_SPIDERETTE_DIFFICULTY, val);
+                }
+                if (settingIdx < totalSettings) {
+                    boolean val = settingsArray.getBoolean(settingIdx++);
+                    sharedData.putBoolean(prefs.PREF_KEY_SPIDERETTE_RELAXED_MODE, val);
                 }
                 break;
             case "Vegas":

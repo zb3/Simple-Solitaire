@@ -287,25 +287,39 @@ public class Spider extends Game {
             currentMainStackID--;
 
         //id below 18 means all main stacks are empty
-        if (currentMainStackID >= 18) {
-
-            ArrayList<Card> cards = new ArrayList<>();
-            ArrayList<Stack> destinations = new ArrayList<>();
-
-            for (int i = 0; i < 10; i++) {
-                cards.add(stacks[currentMainStackID].getCardFromTop(i));
-                stacks[currentMainStackID].getCardFromTop(i).flipUp();
-                destinations.add(stacks[i]);
-            }
-
-            moveToStack(cards, destinations, OPTION_REVERSED_RECORD);
-
-            //test if a card family is now full
-            handlerTestAfterMove.sendDelayed();
-            return 1;
+        if (currentMainStackID < 18) {
+            return 0;
         }
 
-        return 0;
+        if (!prefs.getSavedSpiderRelaxedMode() && hasEmptyTableauStack()) {
+            // if we wanted to display a toast here, honor stopUiUpdates
+            return 0;
+        }
+
+        ArrayList<Card> cards = new ArrayList<>();
+        ArrayList<Stack> destinations = new ArrayList<>();
+
+        for (int i = 0; i < 10; i++) {
+            cards.add(stacks[currentMainStackID].getCardFromTop(i));
+            stacks[currentMainStackID].getCardFromTop(i).flipUp();
+            destinations.add(stacks[i]);
+        }
+
+        moveToStack(cards, destinations, OPTION_REVERSED_RECORD);
+
+        //test if a card family is now full
+        handlerTestAfterMove.sendDelayed();
+        return 1;
+    }
+
+    private boolean hasEmptyTableauStack() {
+        for (int i = 0; i < 10; i++) {
+            if (stacks[i].isEmpty()) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     public int addPointsToScore(ArrayList<Card> cards, int[] originIDs, int[] destinationIDs, boolean isUndoMovement) {

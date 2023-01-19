@@ -237,7 +237,7 @@ Depending on settings: 1, 2 or 4 different card families."</string>
 
 Every card can be placed on empty tableau stacks.
 
-Press on the main stack to deal one card to every tableau stack at once."</string>
+If there are no empty tableau stacks (or in "Relaxed mode"), you can press on the main stack to deal one card to every tableau stack at once."</string>
 <string name="manual_Spider_scoring">"Move a card family to foundation: +200
 
  Flip a card up: +25"</string>
@@ -452,6 +452,8 @@ On the tableau, only top cards can be moved and they can only be moved to the fo
 <string name="settings_games">"Games"</string>
 <string name="settings_games_description">"Set preferences for the game variants"</string>
 <string name="settings_spider_difficulty">"Number of different card families"</string>
+<string name="settings_spider_relaxed_mode_title">"Relaxed mode"</string>
+<string name="settings_spider_relaxed_mode_text">"Allow dealing new cards when some (or all) of the tableau stacks are empty"</string>
 <string name="settings_klondike_draw">"Number of cards to draw"</string>
 <string name="settings_canfield_draw">"Number of cards to draw"</string>
 <string name="settings_show_main_menu">"Start to main menu"</string>

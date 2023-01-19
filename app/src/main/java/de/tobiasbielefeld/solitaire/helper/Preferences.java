@@ -90,8 +90,10 @@ public class Preferences {
     public static String PREF_KEY_PYRAMID_DIFFICULTY;
     public static String PREF_KEY_SPIDER_DIFFICULTY;
     public static String PREF_KEY_SPIDER_DIFFICULTY_OLD;
+    public static String PREF_KEY_SPIDER_RELAXED_MODE;
     public static String PREF_KEY_SPIDERETTE_DIFFICULTY;
     public static String PREF_KEY_SPIDERETTE_DIFFICULTY_OLD;
+    public static String PREF_KEY_SPIDERETTE_RELAXED_MODE;
     public static String PREF_KEY_LANGUAGE;
     public static String PREF_KEY_CURRENT_GAME;
     public static String PREF_KEY_ORIENTATION;
@@ -235,6 +237,8 @@ public class Preferences {
     public static boolean DEFAULT_CALCULATION_ALTERNATIVE;
     public static boolean DEFAULT_MOD3_AUTO_MOVE;
     public static boolean DEFAULT_PYRAMID_AUTO_MOVE;
+    public static boolean DEFAULT_SPIDER_RELAXED_MODE;
+    public static boolean DEFAULT_SPIDERETTE_RELAXED_MODE;
     public static boolean DEFAULT_DEVELOPER_OPTION_MOVE_CARDS_EVERYWHERE;
     public static boolean DEFAULT_DEVELOPER_OPTION_PLAY_EVERY_CARD;
     public static boolean DEFAULT_DEVELOPER_OPTION_INSTANT_WIN;
@@ -306,8 +310,10 @@ public class Preferences {
         PREF_KEY_PYRAMID_DIFFICULTY = res.getString(R.string.pref_key_pyramid_difficulty);
         PREF_KEY_SPIDER_DIFFICULTY = res.getString(R.string.pref_key_spider_difficulty);
         PREF_KEY_SPIDER_DIFFICULTY_OLD = PREF_KEY_SPIDER_DIFFICULTY + OLD;
+        PREF_KEY_SPIDER_RELAXED_MODE = res.getString(R.string.pref_key_spider_relaxed_mode);
         PREF_KEY_SPIDERETTE_DIFFICULTY = res.getString(R.string.pref_key_spiderette_difficulty);
         PREF_KEY_SPIDERETTE_DIFFICULTY_OLD = PREF_KEY_SPIDERETTE_DIFFICULTY + OLD;
+        PREF_KEY_SPIDERETTE_RELAXED_MODE = res.getString(R.string.pref_key_spiderette_relaxed_mode);
         PREF_KEY_SHOW_ADVANCED_SETTINGS = res.getString(R.string.pref_key_show_advanced_settings);
         PREF_KEY_LANGUAGE = res.getString(R.string.pref_key_language);
         PREF_KEY_CURRENT_GAME = res.getString(R.string.pref_key_current_game);
@@ -419,7 +425,9 @@ public class Preferences {
         DEFAULT_PYRAMID_DIFFICULTY = res.getStringArray(R.array.pref_pyramid_difficulty_values)[0];
         DEFAULT_LANGUAGE = res.getStringArray(R.array.pref_language_values)[0];
         DEFAULT_SPIDER_DIFFICULTY = res.getStringArray(R.array.pref_spider_difficulty_values)[0];
+        DEFAULT_SPIDER_RELAXED_MODE = res.getBoolean(R.bool.default_spider_relaxed_mode);
         DEFAULT_SPIDERETTE_DIFFICULTY = res.getStringArray(R.array.pref_spider_difficulty_values)[0];   //same as in Spider
+        DEFAULT_SPIDERETTE_RELAXED_MODE = res.getBoolean(R.bool.default_spiderette_relaxed_mode);
         DEFAULT_ORIENTATION = res.getStringArray(R.array.pref_orientation_values)[0];
         DEFAULT_DOUBLE_TAP_ALL_CARDS = res.getBoolean(R.bool.default_double_tap_all_cards);
         DEFAULT_DOUBLE_TAP_ENABLE = res.getBoolean(R.bool.default_double_tap_enable);
@@ -1208,6 +1216,14 @@ public class Preferences {
 
     public boolean getSavedStatisticsHideWinPercentage() {
         return savedSharedData.getBoolean(PREF_KEY_STATISTICS_HIDE_WIN_PERCENTAGE, DEFAULT_STATISTICS_HIDE_WIN_PERCENTAGE);
+    }
+
+    public boolean getSavedSpiderRelaxedMode() {
+        return savedSharedData.getBoolean(PREF_KEY_SPIDER_RELAXED_MODE, DEFAULT_SPIDER_RELAXED_MODE);
+    }
+
+    public boolean getSavedSpideretteRelaxedMode() {
+        return savedSharedData.getBoolean(PREF_KEY_SPIDERETTE_RELAXED_MODE, DEFAULT_SPIDERETTE_RELAXED_MODE);
     }
 
     public boolean getHideMenuButton() {

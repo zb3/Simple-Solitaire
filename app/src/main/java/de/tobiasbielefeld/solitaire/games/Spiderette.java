@@ -281,33 +281,46 @@ public class Spiderette extends Game {
         while (currentMainStackID > 10 && stacks[currentMainStackID].isEmpty())
             currentMainStackID--;
 
-        //id below 10 means all main stacks are empty
-        if (currentMainStackID >= 11) {
-
-            ArrayList<Card> cards = new ArrayList<>();
-            ArrayList<Stack> destinations = new ArrayList<>();
-            if (currentMainStackID == 11) {
-                for (int i = 0; i < 3; i++) {
-                    cards.add(stacks[currentMainStackID].getCardFromTop(i));
-                    stacks[currentMainStackID].getCardFromTop(i).flipUp();
-                    destinations.add(stacks[i]);
-                }
-            } else {
-                for (int i = 0; i < 7; i++) {
-                    cards.add(stacks[currentMainStackID].getCardFromTop(i));
-                    stacks[currentMainStackID].getCardFromTop(i).flipUp();
-                    destinations.add(stacks[i]);
-                }
-            }
-
-            moveToStack(cards, destinations, OPTION_REVERSED_RECORD);
-
-            //test if a card family is now full
-            handlerTestAfterMove.sendDelayed();
-            return 1;
+        //id below 11 means all main stacks are empty
+        if (currentMainStackID < 11) {
+            return 0;
         }
 
-        return 0;
+        if (!prefs.getSavedSpideretteRelaxedMode() && hasEmptyTableauStack()) {
+            return 0;
+        }
+
+        ArrayList<Card> cards = new ArrayList<>();
+        ArrayList<Stack> destinations = new ArrayList<>();
+        if (currentMainStackID == 11) {
+            for (int i = 0; i < 3; i++) {
+                cards.add(stacks[currentMainStackID].getCardFromTop(i));
+                stacks[currentMainStackID].getCardFromTop(i).flipUp();
+                destinations.add(stacks[i]);
+            }
+        } else {
+            for (int i = 0; i < 7; i++) {
+                cards.add(stacks[currentMainStackID].getCardFromTop(i));
+                stacks[currentMainStackID].getCardFromTop(i).flipUp();
+                destinations.add(stacks[i]);
+            }
+        }
+
+        moveToStack(cards, destinations, OPTION_REVERSED_RECORD);
+
+        //test if a card family is now full
+        handlerTestAfterMove.sendDelayed();
+        return 1;
+    }
+
+    private boolean hasEmptyTableauStack() {
+        for (int i = 0; i < 7; i++) {
+            if (stacks[i].isEmpty()) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     public int addPointsToScore(ArrayList<Card> cards, int[] originIDs, int[] destinationIDs, boolean isUndoMovement) {

@@ -75,7 +75,7 @@ public class GameIDHelper {
         // now settings
         JSONArray settingsArray = new JSONArray();
 
-        switch(gameName) {
+        switch(gameName) { // not all games here, only those that have settings
             case "Calculation":
                 settingsArray.put(prefs.getSavedCalculationAlternativeModeOld());
                 break;
@@ -127,8 +127,6 @@ public class GameIDHelper {
             case "Yukon":
                 settingsArray.put(prefs.getSavedYukonRulesOld());
                 break;
-            default:
-                throw new IllegalStateException();
         }
 
         try {
@@ -333,7 +331,7 @@ public class GameIDHelper {
         // while we could make a special state variable so that that redeal doesn't load new settings,
         // I'm not sure that behaviour would actually be expected
 
-        switch(gameName) {
+        switch(gameName) { // not all games here, only those that have settings
             case "Calculation":
                 if (settingIdx < totalSettings) {
                     boolean val = settingsArray.getBoolean(settingIdx++);
@@ -454,8 +452,6 @@ public class GameIDHelper {
                     sharedData.putString(prefs.PREF_KEY_YUKON_RULES, val);
                 }
                 break;
-            default:
-                throw new IllegalStateException();
         }
 
         boolean hasState = state.has("cards") && state.has("stacks");

@@ -456,6 +456,8 @@ On the tableau, only top cards can be moved and they can only be moved to the fo
 <string name="settings_spider_relaxed_mode_text">"Allow dealing new cards when some (or all) of the tableau stacks are empty"</string>
 <string name="settings_klondike_draw">"Number of cards to draw"</string>
 <string name="settings_canfield_draw">"Number of cards to draw"</string>
+<string name="settings_klondike_thoughtful_mode_title">"Thoughtful mode"</string>
+<string name="settings_klondike_thoughtful_mode_text">"All cards in the tableau will start face up"</string>
 <string name="settings_show_main_menu">"Start to main menu"</string>
 <string name="settings_show_main_menu_description">"Do not enter the last played game on start"</string>
 <string name="settings_golf_easy">"Cyclic moves (Easier)"</string>

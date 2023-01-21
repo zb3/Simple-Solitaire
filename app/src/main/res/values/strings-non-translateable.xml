@@ -72,6 +72,7 @@
     <string name="pref_key_force_tablet_layout" translatable="false">pref_key_force_tablet_layout</string>
     <string name="pref_key_klondike_limit_recycles" translatable="false">pref_key_klondike_limit_recycles</string>
     <string name="pref_key_klondike_number_of_recycles" translatable="false">pref_key_klondike_number_of_recycles</string>
+    <string name="pref_key_klondike_thoughtful_mode" translatable="false">pref_key_klondike_thoughtful_mode</string>
     <string name="pref_key_calculation_alternative" translatable="false">pref_key_calculation_alternative</string>
     <string name="pref_key_hide_time" translatable="false">pref_key_hide_time</string>
     <string name="pref_key_hide_score" translatable="false">pref_key_hide_score</string>

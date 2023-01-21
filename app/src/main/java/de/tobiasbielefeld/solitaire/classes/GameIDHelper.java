@@ -96,6 +96,7 @@ public class GameIDHelper {
                 settingsArray.put(prefs.getSavedKlondikeLimitedRecycles());
                 settingsArray.put(prefs.getSavedNumberOfRecycles(prefs.PREF_KEY_KLONDIKE_NUMBER_OF_RECYCLES,
                         prefs.DEFAULT_KLONDIKE_NUMBER_OF_RECYCLES));
+                settingsArray.put(prefs.getSavedKlondikeThoughtfulMode());
                 break;
             case "Mod3":
                 settingsArray.put(prefs.getSavedMod3AutoMove());
@@ -379,6 +380,10 @@ public class GameIDHelper {
                 if (settingIdx < totalSettings) {
                     sharedData.putString(prefs.PREF_KEY_KLONDIKE_NUMBER_OF_RECYCLES,
                             Integer.toString(settingsArray.getInt(settingIdx++)));
+                }
+                if (settingIdx < totalSettings) {
+                    sharedData.putBoolean(prefs.PREF_KEY_KLONDIKE_THOUGHTFUL_MODE,
+                            settingsArray.getBoolean(settingIdx++));
                 }
                 break;
             case "Mod3":

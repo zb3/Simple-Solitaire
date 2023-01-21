@@ -133,10 +133,15 @@ public class Klondike extends Game {
             }
         }
 
+        boolean shouldFlipAllUp = whichGame == 1 && prefs.getSavedKlondikeThoughtfulMode();
+
         //and move cards to the tableau
         for (int i = 0; i <= 6; i++) {
             for (int j = 0; j < i + 1; j++) {
                 moveToStack(getMainStack().getTopCard(), stacks[i], OPTION_NO_RECORD);
+                if (shouldFlipAllUp) {
+                    stacks[i].getCard(j).flipUp();
+                }
             }
             stacks[i].getCard(i).flipUp();
         }//*/
@@ -273,6 +278,15 @@ public class Klondike extends Game {
             return getMainStack().getSize() <= 0 && stacks[11].getSize() <= 0 && stacks[12].getSize() <= 0 && stacks[13].getSize() <= 1;
         }
 
+        // if we're here and the thoughtful mode is on (for klondike)
+        // it doesn't yet mean we can do autoComplete
+        // we need to ensure all cards are in correct order on all tableau stacks
+        for (int i = 0; i < 7; i++) {
+            if (!testCardsUpToTop(stacks[i], 0, ALTERNATING_COLOR)) {
+                return false;
+            }
+        }
+
         return true;
     }
 
@@ -299,8 +313,14 @@ public class Klondike extends Game {
         //don't move cards from the discard stacks if there is a card on top of them
         //for example: if touched a card on stack 11 (first discard stack) but there is a card
         //on stack 12 (second discard stack) don't move if.
-        return !(((card.getStackId() == 11 || card.getStackId() == 12) && !stacks[13].isEmpty())
-                || (card.getStackId() == 11 && !stacks[12].isEmpty()));
+        if (((card.getStackId() == 11 || card.getStackId() == 12) && !stacks[13].isEmpty()) ||
+                (card.getStackId() == 11 && !stacks[12].isEmpty())) {
+            return false;
+        }
+
+        // for thoughtful mode we need to check cards
+        return currentGame.testCardsUpToTop(card.getStack(), card.getIndexOnStack(),
+                ALTERNATING_COLOR);
     }
 
     public CardAndStack hintTest(ArrayList<Card> visited) {
@@ -314,18 +334,22 @@ public class Klondike extends Game {
                 continue;
             }
 
-            /* complete visible part of a stack to move on the tableau */
-            card = origin.getFirstUpCard();
+            for (int c = origin.getFirstUpCardPos(); c < origin.getSize(); c++) {
+                card = origin.getCard(c);
 
-            if (!visited.contains(card) && !(card.isFirstCard() && card.getValue() == 13)
-                    && card.getValue() != 1) {
-                for (int j = 0; j <= 6; j++) {
-                    if (j == i) {
-                        continue;
-                    }
+                if (visited.contains(card) || !testCardsUpToTop(origin, c, ALTERNATING_COLOR)) {
+                    continue;
+                }
 
-                    if (card.test(stacks[j])) {
-                        return new CardAndStack(card, stacks[j]);
+                if (!(card.isFirstCard() && card.getValue() == 13) && card.getValue() != 1) {
+                    for (int j = 0; j <= 6; j++) {
+                        if (j == i) {
+                            continue;
+                        }
+
+                        if (card.test(stacks[j])) {
+                            return new CardAndStack(card, stacks[j]);
+                        }
                     }
                 }
             }

@@ -94,7 +94,7 @@ public class SettingsGames extends AppCompatPreferenceActivity {
      * I would need to write the strings manually in the cases.
      */
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-        if (key.equals(PREF_KEY_KLONDIKE_DRAW)) {
+        if (key.equals(PREF_KEY_KLONDIKE_DRAW) || key.equals(PREF_KEY_KLONDIKE_THOUGHTFUL_MODE)) {
             showToast(String.format(getString(R.string.settings_restart_game), getString(R.string.games_Klondike)), this);
 
         } else if (key.equals(PREF_KEY_VEGAS_DRAW)) {

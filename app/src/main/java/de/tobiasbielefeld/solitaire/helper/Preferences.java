@@ -82,6 +82,8 @@ public class Preferences {
     public static String PREF_KEY_YUKON_RULES_OLD;
     public static String PREF_KEY_KLONDIKE_DRAW;
     public static String PREF_KEY_KLONDIKE_DRAW_OLD;
+
+    public static String PREF_KEY_KLONDIKE_THOUGHTFUL_MODE;
     public static String PREF_KEY_VEGAS_DRAW;
     public static String PREF_KEY_VEGAS_DRAW_OLD;
     public static String PREF_KEY_GOLF_CYCLIC;
@@ -234,6 +236,9 @@ public class Preferences {
     public static boolean DEFAULT_PYRAMID_LIMITED_RECYCLES;
     public static boolean DEFAULT_FORTYEIGHT_LIMITED_RECYCLES;
     public static boolean DEFAULT_KLONDIKE_LIMITED_RECYCLES;
+
+    public static boolean DEFAULT_KLONDIKE_THOUGHTFUL_MODE;
+
     public static boolean DEFAULT_CALCULATION_ALTERNATIVE;
     public static boolean DEFAULT_MOD3_AUTO_MOVE;
     public static boolean DEFAULT_PYRAMID_AUTO_MOVE;
@@ -306,6 +311,7 @@ public class Preferences {
         PREF_KEY_KLONDIKE_DRAW_OLD = PREF_KEY_KLONDIKE_DRAW + OLD;
         PREF_KEY_VEGAS_DRAW_OLD = PREF_KEY_VEGAS_DRAW + OLD;
         PREF_KEY_CANFIELD_DRAW_OLD = PREF_KEY_CANFIELD_DRAW + OLD;
+        PREF_KEY_KLONDIKE_THOUGHTFUL_MODE = res.getString(R.string.pref_key_klondike_thoughtful_mode);
         PREF_KEY_GOLF_CYCLIC = res.getString(R.string.pref_key_golf_cyclic);
         PREF_KEY_PYRAMID_DIFFICULTY = res.getString(R.string.pref_key_pyramid_difficulty);
         PREF_KEY_SPIDER_DIFFICULTY = res.getString(R.string.pref_key_spider_difficulty);
@@ -510,6 +516,7 @@ public class Preferences {
         DEFAULT_NAPOLEONSTOMB_NUMBER_OF_RECYCLES = res.getString(R.string.default_napoleons_tomb_number_of_recycles);
         DEFAULT_SAVE_INCLUDE_STATE = res.getBoolean(R.bool.default_save_include_state);
         DEFAULT_SAVE_INCLUDE_UNDO = res.getBoolean(R.bool.default_save_include_undo);
+        DEFAULT_KLONDIKE_THOUGHTFUL_MODE = res.getBoolean(R.bool.default_klondike_thoughtful_mode);
     }
 
     private void putIntList(String name, List<Integer> list) {
@@ -1225,6 +1232,11 @@ public class Preferences {
     public boolean getSavedSpideretteRelaxedMode() {
         return savedSharedData.getBoolean(PREF_KEY_SPIDERETTE_RELAXED_MODE, DEFAULT_SPIDERETTE_RELAXED_MODE);
     }
+
+    public boolean getSavedKlondikeThoughtfulMode() {
+        return savedSharedData.getBoolean(PREF_KEY_KLONDIKE_THOUGHTFUL_MODE, DEFAULT_KLONDIKE_THOUGHTFUL_MODE);
+    }
+
 
     public boolean getHideMenuButton() {
         if (hasSettingsOnlyForThisGame()) {

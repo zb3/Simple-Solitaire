@@ -30,6 +30,12 @@
             android:summary="%s"
             android:title="@string/settings_number_of_recycles" />
 
+        <de.tobiasbielefeld.solitaire.classes.CustomCheckBoxPreference
+            android:defaultValue="@bool/default_klondike_thoughtful_mode"
+            android:key="@string/pref_key_klondike_thoughtful_mode"
+            android:summary="@string/settings_klondike_thoughtful_mode_text"
+            android:title="@string/settings_klondike_thoughtful_mode_title" />
+
     </PreferenceCategory>
 
 </PreferenceScreen>

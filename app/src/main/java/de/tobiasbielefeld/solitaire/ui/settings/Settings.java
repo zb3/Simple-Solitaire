@@ -34,6 +34,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
+import de.tobiasbielefeld.solitaire.BuildConfig;
 import de.tobiasbielefeld.solitaire.LoadGame;
 import de.tobiasbielefeld.solitaire.R;
 import de.tobiasbielefeld.solitaire.checkboxpreferences.CheckBoxPreferenceFourColorMode;
@@ -58,6 +59,7 @@ import static de.tobiasbielefeld.solitaire.helper.Preferences.*;
  */
 
 public class Settings extends AppCompatPreferenceActivity {
+    public static final String EXTRA_CURRENT_GAME = BuildConfig.APPLICATION_ID + ".CURRENT_GAME";
 
     private Preference preferenceMenuBarPosition;
     private Preference preferenceMenuColumns;
@@ -126,6 +128,25 @@ public class Settings extends AppCompatPreferenceActivity {
             loadHeadersFromResource(R.xml.pref_headers, target);
         }
 
+        Intent intent = getIntent();
+        if (intent.hasExtra(EXTRA_CURRENT_GAME)) {
+            int gameIndex = intent.getIntExtra(EXTRA_CURRENT_GAME, -1);
+            String fragmentName = SettingsGames.getFragmentNameForGameIndex(gameIndex);
+
+            if (fragmentName != null) { // there are preferences for this game
+                Intent launchIntent = new Intent(this, SettingsGames.class);
+                launchIntent.putExtra(EXTRA_SHOW_FRAGMENT, fragmentName);
+                launchIntent.putExtra(EXTRA_SHOW_FRAGMENT_TITLE, lg.getGameNameResID(gameIndex));
+                launchIntent.putExtra(EXTRA_NO_HEADERS, true);
+
+                Header gameHeader = new Header();
+                gameHeader.title =  lg.getGameName(getApplicationContext().getResources(),
+                        gameIndex);
+                gameHeader.intent = launchIntent;
+
+                target.add(gameHeader);
+            }
+        }
     }
 
     /*

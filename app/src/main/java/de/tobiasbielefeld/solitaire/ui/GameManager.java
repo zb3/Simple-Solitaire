@@ -843,6 +843,10 @@ public class GameManager extends CustomAppCompatActivity implements View.OnTouch
                 break;
             case R.id.mainButtonSettings:       //open Settings activity
                 Intent i = new Intent(this, Settings.class);
+                int gameIndex = lg.getGameIndex();
+                if (gameIndex != -1) {
+                    i.putExtra(Settings.EXTRA_CURRENT_GAME, gameIndex);
+                }
                 startActivityForResult(i, 1);
                 break;
             case R.id.buttonMainAutoComplete:   //start auto complete

@@ -45,6 +45,28 @@ import static de.tobiasbielefeld.solitaire.helper.Preferences.*;
 
 public class SettingsGames extends AppCompatPreferenceActivity {
 
+    private static final String[] fragmentNameForGameIndex = new String[]{
+            null, // AcesUp
+            CalculationPreferenceFragment.class.getName(),
+            CanfieldPreferenceFragment.class.getName(),
+            FortyEightPreferenceFragment.class.getName(),
+            null, // FreeCell
+            GolfPreferenceFragment.class.getName(),
+            null, // GrandfathersClock
+            null, // Gypsy
+            KlondikePreferenceFragment.class.getName(),
+            null, // Maze
+            Mod3PreferenceFragment.class.getName(),
+            NapoleonsTombPreferenceFragment.class.getName(),
+            PyramidPreferenceFragment.class.getName(),
+            null, // SimpleSimon
+            SpiderPreferenceFragment.class.getName(),
+            SpiderettePreferenceFragment.class.getName(),
+            null, // TriPeaks
+            VegasPreferenceFragment.class.getName(),
+            YukonPreferenceFragment.class.getName()
+        };
+
     private Preference preferenceVegasBetAmount;
 
     @Override
@@ -318,5 +340,9 @@ public class SettingsGames extends AppCompatPreferenceActivity {
             addPreferencesFromResource(R.xml.pref_games_napoleons_tomb);
             setHasOptionsMenu(true);
         }
+    }
+
+    public static String getFragmentNameForGameIndex(int index) {
+        return fragmentNameForGameIndex[index];
     }
 }

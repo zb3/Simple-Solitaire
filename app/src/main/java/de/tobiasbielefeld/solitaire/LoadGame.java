@@ -56,6 +56,7 @@ import static de.tobiasbielefeld.solitaire.SharedData.*;
 public class LoadGame {
 
     private String gameName;
+    private int gameIndex = -1;
     private String sharedPrefName;
     private ArrayList<AllGameInformation> allGameInformation = new ArrayList<>();
     private int GAME_COUNT;
@@ -71,6 +72,7 @@ public class LoadGame {
 
         sharedPrefName = allGameInformation.get(index).getSharedPrefName();
         gameName = allGameInformation.get(index).getName(activity.getResources());
+        gameIndex = index;
 
         switch (index) {
             default:
@@ -315,8 +317,16 @@ public class LoadGame {
         return gameName;
     }
 
+    public int getGameIndex() {
+        return gameIndex;
+    }
+
     public String getGameName(Resources res, int index) {
         return allGameInformation.get(index).getName(res);
+    }
+
+    public int getGameNameResID(int index) {
+        return allGameInformation.get(index).getNameResID();
     }
 
     public String getSharedPrefName() {
@@ -342,6 +352,10 @@ public class LoadGame {
 
         public String getName(Resources res) {
             return res.getString(shownNameResID);
+        }
+
+        public int getNameResID() {
+            return shownNameResID;
         }
 
         public String getSharedPrefName() {

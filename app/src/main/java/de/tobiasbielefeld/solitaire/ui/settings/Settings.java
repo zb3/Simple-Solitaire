@@ -140,8 +140,8 @@ public class Settings extends AppCompatPreferenceActivity {
                 launchIntent.putExtra(EXTRA_NO_HEADERS, true);
 
                 Header gameHeader = new Header();
-                gameHeader.title =  lg.getGameName(getApplicationContext().getResources(),
-                        gameIndex);
+                gameHeader.title = String.format(getString(R.string.settings_current_game_settings),
+                        lg.getGameName(getApplicationContext().getResources(), gameIndex));
                 gameHeader.intent = launchIntent;
 
                 target.add(gameHeader);

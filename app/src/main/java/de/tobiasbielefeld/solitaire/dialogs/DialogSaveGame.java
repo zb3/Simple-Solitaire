@@ -2,6 +2,7 @@ package de.tobiasbielefeld.solitaire.dialogs;
 
 import static android.app.Activity.RESULT_OK;
 import static de.tobiasbielefeld.solitaire.SharedData.gameLogic;
+import static de.tobiasbielefeld.solitaire.SharedData.lg;
 import static de.tobiasbielefeld.solitaire.SharedData.prefs;
 
 import android.app.Dialog;
@@ -42,7 +43,7 @@ public class DialogSaveGame extends CustomDialogFragment {
         // use .bin because that's what android understands marks as octet-stream
         String cdate = new SimpleDateFormat("yyMMdd'T'HHmmss").format(new Date());
         return String.format("save_%s_%s.bin",
-                GameIDHelper.getCurrentGameName(),  cdate);
+                lg.getSharedPrefName(),  cdate);
     }
 
     @Override

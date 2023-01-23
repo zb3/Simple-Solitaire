@@ -39,24 +39,8 @@ import de.tobiasbielefeld.solitaire.ui.GameManager;
 public class GameIDHelper {
     private static final String TAG = "GameIDHelper";
 
-    public static String[] gameNames = { "AcesUp", "Calculation",
-            "Canfield", "FortyEight", "Freecell", "Golf", "GrandfathersClock", "Gypsy", "Klondike",
-            "Maze", "Mod3", "NapoleonsTomb", "Pyramid", "SimpleSimon", "Spider", "Spiderette",
-            "TriPeaks", "Vegas", "Yukon" };
-    private static final HashMap<String, Integer> nameToIndex = new HashMap<>();
-    static {
-        for (int i = 0; i < gameNames.length; i++) {
-            nameToIndex.put(gameNames[i], i);
-        }
-    }
-
-    public static String getCurrentGameName() {
-        String[] gameNameParts = currentGame.getClass().getName().split("\\.");
-        return gameNameParts[gameNameParts.length-1];
-    }
-
     public static JSONObject getCurrentStateJSON(boolean withState, boolean withUndo) {
-        String gameName = getCurrentGameName();
+        String gameName = lg.getSharedPrefName();
 
         JSONObject save = new JSONObject();
 
@@ -313,7 +297,7 @@ public class GameIDHelper {
     public static int restoreJSONState(JSONObject state, Context context) throws JSONException {
         String gameName = state.getString("game");
 
-        int index = nameToIndex.get(gameName);
+        int index = lg.getGameIndexForPrefName(gameName);
 
         SharedPreferences.Editor gameData = context.getSharedPreferences(lg.getSharedPrefNameOfGame(index),
                 MODE_PRIVATE).edit();

@@ -23,6 +23,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import de.tobiasbielefeld.solitaire.games.AcesUp;
 import de.tobiasbielefeld.solitaire.games.Calculation;
@@ -59,6 +60,8 @@ public class LoadGame {
     private int gameIndex = -1;
     private String sharedPrefName;
     private ArrayList<AllGameInformation> allGameInformation = new ArrayList<>();
+    private HashMap<String, Integer> prefNameToIndex = new HashMap<>();
+
     private int GAME_COUNT;
 
     /**
@@ -134,6 +137,7 @@ public class LoadGame {
      */
     public void loadAllGames() {
         allGameInformation.clear();
+        prefNameToIndex.clear();
 
         allGameInformation.add(new AllGameInformation(R.string.games_AcesUp, "AcesUp", false, 40));
         allGameInformation.add(new AllGameInformation(R.string.games_Calculation, "Calculation", false, 30));
@@ -154,6 +158,10 @@ public class LoadGame {
         allGameInformation.add(new AllGameInformation(R.string.games_TriPeaks, "TriPeaks", true, 40));
         allGameInformation.add(new AllGameInformation(R.string.games_Vegas, "Vegas", false, 30));
         allGameInformation.add(new AllGameInformation(R.string.games_Yukon, "Yukon", true, 80));
+
+        for (int i = 0; i < allGameInformation.size(); i++) {
+            prefNameToIndex.put(allGameInformation.get(i).sharedPrefName, i);
+        }
 
         GAME_COUNT = allGameInformation.size();
     }
@@ -319,6 +327,10 @@ public class LoadGame {
 
     public int getGameIndex() {
         return gameIndex;
+    }
+
+    public int getGameIndexForPrefName(String prefName) {
+        return prefNameToIndex.get(prefName);
     }
 
     public String getGameName(Resources res, int index) {

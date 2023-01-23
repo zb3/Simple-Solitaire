@@ -122,10 +122,15 @@ public class Settings extends AppCompatPreferenceActivity {
 
     @Override
     public void onBuildHeaders(List<Header> target) {
+        loadHeadersFromResource(R.xml.pref_headers, target);
+
         if (prefs.getShowAdvancedSettings()) {
-            loadHeadersFromResource(R.xml.pref_headers_with_advanced_settings, target);
-        } else {
-            loadHeadersFromResource(R.xml.pref_headers, target);
+            Header header = new Header();
+            header.titleRes = R.string.settings_developer_options;
+            header.summaryRes = R.string.settings_developer_options_description;
+            header.fragment = DeveloperOptionsPreferenceFragment.class.getName();
+
+            target.add(header);
         }
 
         Intent intent = getIntent();

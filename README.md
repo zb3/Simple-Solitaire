@@ -1,3 +1,22 @@
+# Simple Solitaire Fork
+
+This is a fork of [TobiasBielefeld/Simple-Solitaire](https://github.com/TobiasBielefeld/Simple-Solitaire) which is a collection of solitaire games for Android. The main modification is the ability to save and load games, allowing you to continue playing with the same deck (this feature was also requested by others). While creating a fork was not my initial intention, the original repository appears to be unmaintained.
+
+(this repository is not a "fork" in GitHub's terms because GitHub considers forks to be second-class citizens, for example you can't search code in forks or make private forks)
+
+Notable changes:
+* Support for saving and loading games
+* Enabled Maze and Spiderette (those games were implemented before, but not in the last release)
+* Spider relaxed mode (it was previously the default and non-configurable)
+* Klondike thoughtful mode
+* Faster access to game settings (the last menu item is the current game)
+
+You can also view all changes, along with explanations in the commit messages using GitHub's compare feature [here](https://github.com/zb3/Simple-Solitaire/compare/c0b807a9e2f988315fad7060d5a505eb1493f362..main)
+
+---
+
+## Original readme below:
+
 [![GitHub version](https://badge.fury.io/gh/tobiasBielefeld%2FSimple-Solitaire.svg)](https://badge.fury.io/gh/tobiasBielefeld%2FSimple-Solitaire)
 ![license](http://img.shields.io/badge/license-GPLv3+-brightgreen.svg)
 ![platform](http://img.shields.io/badge/platform-Android-blue.svg)
@@ -112,7 +131,7 @@ Thanks to the following persons for providing translations :D (Help translating 
 - Portuguese: Alexandre Parente (on POEditor.com)
 - Ukranian: olexn (on POEditor.com)
 
-## Licenses
+## <a id="licenses-info"></a> Licenses
 
 Poker card theme: Vectorized Playing Cards 2.0 - http://sourceforge.net/projects/vector-cards/
 Copyright 2015 - Chris Aguilar - conjurenation@gmail.com

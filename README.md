@@ -13,6 +13,12 @@ Notable changes:
 
 You can also view all changes, along with explanations in the commit messages using GitHub's compare feature [here](https://github.com/zb3/Simple-Solitaire/compare/c0b807a9e2f988315fad7060d5a505eb1493f362..main)
 
+### Download
+This version is currently not uploaded to any store, but you can download the APK directly from:
+https://github.com/zb3/Simple-Solitaire/releases/latest/download/app-release.apk 
+
+You can also download the debug APK from the [Releases page](https://github.com/zb3/Simple-Solitaire/releases/latest)
+
 ---
 
 ## Original readme below:
